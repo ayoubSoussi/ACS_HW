@@ -1,0 +1,43 @@
+Improve a JHipster sub-generator
+Choose one into the next propositions (3 next slides)
+or Invent One
+
+Frontend
+Improve together (ie all groups) the JHipster sub-generators for instance : 
+add new data types (geolocation, url)
+add the entity list page with generator-jhipster-leafletmap for geoloc type
+add QRCode into the entity detail page (extend the JDL directives)
+    into VueJS, React or Angular frontends
+https://github.com/techiediaries/ngx-qrcode
+https://github.com/jhipster/generator-jhipster/blob/master/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.html.ejs 
+https://github.com/jhipster/generator-jhipster/blob/master/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.ts.ejs 
+add QRCode into the entity list page (extend the JDL directives)
+    into VueJS, React or Angular frontends
+add a grid presentation for the entity list page (extend the JDL directives)
+    into VueJS, React or Angular frontends
+add a tour into the generated entity (https://github.com/tnicola/ngx-joyride)
+...
+
+Backend
+Improve together (ie all groups) the JHipster sub-generators for instance : 
+add options (publisher/subscriber) for generator-jhipster-spring-cloud-stream
+https://github.com/hipster-labs/generator-jhipster-spring-cloud-stream/tree/master/generators/app/templates/src/main/java/package 
+add broker options (RabbitMQ/Kafka) for generator-jhipster-spring-cloud-stream
+https://github.com/jhipster/generator-jhipster/blob/1e0faa826a79156a7aad6376a5028b140d4f9760/generators/server/templates/src/main/docker/kafka.yml.ejs 
+add broker options (MQTT with Mosquitto) for generator-jhipster-spring-cloud-stream
+https://github.com/CampusIoT/campusiot-app/blob/master/src/main/java/fr/imag/campusiot/app/service/impl/MqttSinkImpl.java 
+https://github.com/spring-cloud-stream-app-starters/mqtt 
+...
+
+devops
+Improve together (ie all groups) the JHipster sub-generators for instance : 
+add docker-compose file for mosquitto MQTT broker
+if generator-jhipster-spring-cloud-stream (with MQTT)
+add docker-compose files for database utilities (periodic backup, admin)
+Cassandra, CouchDB, Oracle, MS SqlServer, Neo4j
+ALREADY done for postgresql, mysql, mariadb, mongodb
+See https://www.jhipster.tech/modules/marketplace/#/details/generator-jhipster-database-backup
+add docker-compose file for CockroachDB (instead of Postgresql one)
+https://www.cockroachlabs.com/
+https://hub.docker.com/u/cockroachdb/#! 
+
