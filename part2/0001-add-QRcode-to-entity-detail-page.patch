@@ -1,0 +1,67 @@
+From afa35e64a6f2c7a8af4525ee91d7e06c2e213599 Mon Sep 17 00:00:00 2001
+From: Ayoub Soussi <ayoubfme@gmail.com>
+Date: Fri, 5 Feb 2021 00:09:12 +0100
+Subject: [PATCH] add QRcode to entity detail page
+
+---
+ .../entities/entity-management-detail.component.html.ejs  | 8 ++++++++
+ .../entities/entity-management-detail.component.ts.ejs    | 4 ++++
+ .../webapp/app/entities/entity-management.module.ts.ejs   | 3 +++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.html.ejs b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.html.ejs
+index ca3d08d907..88e7bd4298 100644
+--- a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.html.ejs
++++ b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.html.ejs
+@@ -126,4 +126,12 @@
+             <%_ } _%>
+         </div>
+     </div>
++
++<ngx-qrcode
++        [elementType]="elementType"
++        [value]="<%= entityInstance %>.id.toString()"
++        cssClass="aclass"
++        errorCorrectionLevel="L">
++</ngx-qrcode>
++
+ </div>
+diff --git a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.ts.ejs b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.ts.ejs
+index 643bcd1bb3..34bcbdda38 100644
+--- a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.ts.ejs
++++ b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management-detail.component.ts.ejs
+@@ -29,6 +29,10 @@ import { I<%= entityAngularName %> } from 'app/shared/model/<%= entityModelFileN
+     templateUrl: './<%= entityFileName %>-detail.component.html'
+ })
+ export class <%= entityAngularName %>DetailComponent implements OnInit {
++    title = 'app';
++    elementType = 'url';
++    value = 'TestingQR';
++
+     <%= entityInstance %>: I<%= entityAngularName %> | null = null;
+ 
+     constructor(
+diff --git a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.module.ts.ejs b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.module.ts.ejs
+index 68f61631cd..22fbf89409 100644
+--- a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.module.ts.ejs
++++ b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.module.ts.ejs
+@@ -19,6 +19,8 @@
+ import { NgModule } from '@angular/core';
+ import { RouterModule } from '@angular/router';
+ 
++import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
++
+ import { SharedModule } from 'app/shared/shared.module';
+ import { <%= entityAngularName %>Component } from './<%= entityFileName %>.component';
+ import { <%= entityAngularName %>DetailComponent } from './<%= entityFileName %>-detail.component';
+@@ -29,6 +31,7 @@ import { <%= entityAngularName %>DeleteDialogComponent } from './<%= entityFileN
+ 
+ @NgModule({
+     imports: [
++	NgxQRCodeModule,
+         SharedModule,
+         RouterModule,
+     ],
+-- 
+2.17.1
+
