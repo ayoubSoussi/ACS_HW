@@ -1,0 +1,3 @@
+In this first improvement, we added a QR code in the detail pages of each entity created in the jhipster application.
+To do so, we used the library ngx-qrcode that allows to add QR codes to an angular app.
+This folder contains a git patch showing the modifications that we did on the jhipster generator source code, and a folder containing demonstration images.

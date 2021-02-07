@@ -1,0 +1,47 @@
+From 27009bb9fee272f443bb99587d96de947cf17476 Mon Sep 17 00:00:00 2001
+From: Ayoub Soussi <ayoubfme@gmail.com>
+Date: Sat, 6 Feb 2021 12:47:00 +0100
+Subject: [PATCH 2/2] Add QR code to entity list page
+
+---
+ .../app/entities/entity-management.component.html.ejs     | 8 ++++++++
+ .../app/entities/entity-management.component.ts.ejs       | 4 ++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.html.ejs b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.html.ejs
+index a4266c71f3..68d7c746da 100644
+--- a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.html.ejs
++++ b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.html.ejs
+@@ -193,6 +193,14 @@
+                             <%_ } _%>
+                         </div>
+                     </td>
++		    <td>
++			<ngx-qrcode
++				[elementType]="elementType"
++				[value]="<%= entityInstance %>.id.toString()"
++				cssClass="aclass"
++				errorCorrectionLevel="L">
++			</ngx-qrcode>
++		    </td>
+                 </tr>
+             </tbody>
+         </table>
+diff --git a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.ts.ejs b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.ts.ejs
+index 51fefc6914..a91e375a70 100644
+--- a/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.ts.ejs
++++ b/generators/entity-client/templates/angular/src/main/webapp/app/entities/entity-management.component.ts.ejs
+@@ -43,6 +43,10 @@ import { <%= entityAngularName %>DeleteDialogComponent } from './<%= entityFileN
+     templateUrl: './<%= entityFileName %>.component.html'
+ })
+ export class <%= entityAngularName %>Component implements OnInit, OnDestroy {
++    title = 'app';
++    elementType = 'url';
++    value = 'TestingQR';
++
+     <%_ if (pagination === 'pagination') { _%>
+ <%- include('pagination-template', {toArrayString: toArrayString}); -%>
+     <%_ } else if (pagination === 'infinite-scroll') { _%>
+-- 
+2.17.1
+
